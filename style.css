@@ -1,0 +1,41 @@
+header {
+    background-color: #7F2A6E;
+}
+
+header .nav-link {
+    color: #feffe9; /* Custom color for the nav links */
+}
+
+h1 {
+    font-size: 50px;
+    background: -webkit-linear-gradient(#0a00e5, #e715b1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.center {
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.content > div {
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.spacer {
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: #fcdfff;
+    color: #2c0330;
+}

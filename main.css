@@ -11,6 +11,13 @@ h1 {
     text-align: center;
 }
 
+.center-50 {
+    width: 50%;
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+}
+
 .content {
     display: flex;
     flex-flow: row wrap;

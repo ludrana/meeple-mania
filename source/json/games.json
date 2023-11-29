@@ -1,0 +1,57 @@
+[
+    {
+        "title": "Колонизаторы",
+        "genre": "Стратегия",
+        "publisher": "Издатель 1",
+        "minpeople": 2,
+        "maxpeople": 8,
+        "mintime": 30,
+        "maxtime": 150,
+        "minage": "12",
+        "photo": "cat-main.jpg"
+    },
+    {
+        "title": "Монополия",
+        "genre": "Настольная",
+        "publisher": "Издатель 2",
+        "minpeople": 2,
+        "maxpeople": 8,
+        "mintime": 30,
+        "maxtime": 150,
+        "minage": "8",
+        "photo": "cat-main.jpg"
+    },
+    {
+        "title": "Шахматы",
+        "genre": "Стратегия",
+        "publisher": "Издатель 3",
+        "minpeople": 2,
+        "maxpeople": 8,
+        "mintime": 30,
+        "maxtime": 150,
+        "minage": "6",
+        "photo": "cat-main.jpg"
+    },
+    {
+        "title": "UNO",
+        "genre": "Карточная",
+        "publisher": "Издатель 4",
+        "minpeople": 2,
+        "maxpeople": 8,
+        "mintime": 30,
+        "maxtime": 150,
+        "minage": "14",
+        "photo": "cat-main.jpg"
+    },
+    {
+        "title": "Каркассон",
+        "genre": "Стратегия",
+        "publisher": "Издатель 5",
+        "minpeople": 2,
+        "maxpeople": 8,
+        "mintime": 30,
+        "maxtime": 150,
+        "minage": "16",
+        "photo": "cat-main.jpg"
+    }
+]

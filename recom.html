@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meeple Mania</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="recform.css">
+
+
+
+  </head>
+  <body>
+    <!-- Начало шапки -->
+    <header class="p-3">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <img src="icon.png" width="40" height="40" role="img" aria-label="Meeple Mania" ><use xlink:href="#bootstrap"/></img>
+          </a>
+  
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link">Главная</a></li>
+            <li><a href="#" class="nav-link">Список настолок</a></li>
+            <li><a href="#" class="nav-link">Рекомендательная система</a></li>
+            <li><a href="#" class="nav-link">О нас</a></li>
+          </ul>
+  
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Регистрация</button>
+            <button type="button" class="btn btn-warning">Вход</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Конец шапки -->
+
+    <div class="recform">
+      <h2>Рекомендатор настольных игр</h2>
+
+      <form id="recommendationForm">
+          <label for="numberOfPlayers">Количество игроков: <span id="playerCount">1</span></label>
+          <input type="range" id="numberOfPlayers" name="numberOfPlayers" min="1" max="15" oninput="updatePlayerCount()" required>
+
+          <label for="genre">Жанр:</label>
+          <select id="genre" name="genre" required>
+              <option value="strategy">Стратегия</option>
+              <option value="party">Вечеринка</option>
+              <option value="family">Семейная</option>
+              <!-- Добавьте другие жанры по вашему выбору -->
+          </select>
+
+          <label for="playTime">Время игры (в минутах): <span id="playTimeValue">30</span></label>
+          <input type="range" id="playTime" name="playTime" min="15" max="240" step="15" oninput="updatePlayTime()" required>
+
+          <label for="age">Возрастная категория:</label>
+          <select id="age" name="age" required>
+              <option value="child">Дети</option>
+              <option value="teen">Подростки</option>
+              <option value="adult">Взрослые</option>
+          </select>
+
+          <label for="publisher">Издатель:</label>
+          <select id="publisher" name="publisher" required>
+              <option value="publisher1">Издатель 1</option>
+              <option value="publisher2">Издатель 2</option>
+              <option value="publisher3">Издатель 3</option>
+              <!-- Добавьте других издателей по вашему выбору -->
+          </select>
+
+          <button type="button" onclick="getRecommendation()">Получить рекомендацию</button>
+      </form>
+    </div>
+
+    <script>
+      function updatePlayerCount() {
+          document.getElementById("playerCount").innerText = document.getElementById("numberOfPlayers").value;
+      }
+
+      function updatePlayTime() {
+          document.getElementById("playTimeValue").innerText = document.getElementById("playTime").value;
+      }
+
+      function getRecommendation() {
+          // Здесь можно добавить логику обработки данных формы и вывода рекомендации
+          alert("Рекомендация будет выведена здесь!");
+      }
+  </script>
+
+
+
+
+</body>
+</html>

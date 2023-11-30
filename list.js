@@ -1,5 +1,6 @@
 const games = [
     {
+        "id": 0,
         "title": "Колонизаторы",
         "image": "https://vsedrugoeshop.ru/upload/ammina.optimizer/jpg-webp/q80/upload/iblock/57b/57b9f24d9552aff08dac13f05f71daf7/M1576_1000x1000.webp",
         "genre": "Стратегия",
@@ -13,6 +14,7 @@ const games = [
         "descLong": "\"Колонизаторы\" - настольная стратегическая игра, в которой игроки принимают роль колонизаторов, исследующих и колонизирующих новые земли. Игроки торгуют ресурсами, строят поселения и взаимодействуют с другими игроками в поисках победы. Игра привлекает любителей глубоких стратегических игр и предлагает множество тактических возможностей."
     },
     {
+        "id": 1,
         "title": "Монополия",
         "image": "https://ir-1.ozone.ru/s3/multimedia-4/wc500/6482663956.jpg",
         "genre": "Стратегия",
@@ -26,6 +28,7 @@ const games = [
         "descLong": "\"Монополия\" - классическая настольная игра, в которой игроки перемещаются по игровой доске, покупают недвижимость, строят дома и отели, а также выманивают деньги у своих соперников. Цель игры - обогатиться, управлять своими финансами и выводить других игроков из игры."
     },
     {
+        "id": 2,
         "title": "Шахматы",
         "image": "https://ir.ozone.ru/s3/multimedia-2/wc500/6613360850.jpg",
         "genre": "Стратегия",
@@ -39,6 +42,7 @@ const games = [
         "descLong": "\"Шахматы\" - это классическая настольная игра для двух игроков, которая представляет собой игру на доске, где каждый игрок управляет своими шахматными фигурами в попытке захватить короля соперника. Шахматы требуют высокого уровня стратегического и тактического мышления."
     },
     {
+        "id": 3,
         "title": "UNO",
         "image": "https://ir.ozone.ru/s3/multimedia-b/wc500/6631963031.jpg",
         "genre": "Карточная",
@@ -52,6 +56,7 @@ const games = [
         "descLong": "\"UNO\" - это карточная игра, в которой игроки избавляются от своих карт, сопоставляя их с предыдущими по цвету, цифре или выполняя специальные действия, такие как \"переворот направления\" или \"взять две карты\". Целью игры является избавление от всех карт в руке."
     },
     {
+        "id": 4,
         "title": "Каркассон",
         "image": "https://ir.ozone.ru/s3/multimedia-m/wc500/6008635162.jpg",
         "genre": "Стратегия",
@@ -79,7 +84,7 @@ function createCard(data) {
     <p class="card-text">${data.descShort}</p>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Описание</button>
+        <a href="pattern.html?game=${data.id}"><button type="button" class="btn btn-sm btn-outline-secondary">Описание</button></a>
         <button type="button" class="btn btn-sm btn-outline-secondary">Добавить в корзину</button>
       </div>
       <small class="text-body-secondary">${data.mintime} - ${data.maxtime}</small>

@@ -25,25 +25,25 @@
     <!-- Шапка -->
     <header class="p-3">
         <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <img src="icon.png" width="40" height="40" role="img" aria-label="Meeple Mania"><use xlink:href="#bootstrap"/></img>
-                </a>
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link">Главная</a></li>
-                    <li><a href="#" class="nav-link">Список настолок</a></li>
-                    <li><a href="#" class="nav-link">Рекомендательная система</a></li>
-                    <li><a href="javascript:void(0);" onclick="toggleAboutContent()" class="nav-link">О нас</a></li>
-                </ul>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">Регистрация</button>
-                    <button type="button" class="btn btn-warning">Вход</button>
-                </div>
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="main.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <img src="source/img/icon.png" width="40" height="40" role="img" aria-label="Meeple Mania" ><use xlink:href="#bootstrap"/></img>
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="main.html" class="nav-link">Главная</a></li>
+              <li><a href="list.html" class="nav-link">Список настолок</a></li>
+              <li><a href="recom.html" class="nav-link">Рекомендательная система</a></li>
+              <li><a href="about-us.html" class="nav-link">О нас</a></li>
+            </ul>
+    
+            <div class="text-end">
+              <a href="loginandpassword.html?screen=registerForm"><button type="button" class="btn btn-outline-light me-2">Регистрация</button></a>
+              <a href="loginandpassword.html?screen=loginForm"><button type="button" class="btn btn-warning" >Вход</button></a>
             </div>
+          </div>
         </div>
-    </header>
+      </header>
     <!-- Конец шапки -->
 
     
@@ -149,12 +149,24 @@ function updateGameInfo(index) {
     document.getElementById("gameTime").textContent = game.mintime + "-" + game.maxtime + " мин";
     document.getElementById("gameAge").textContent = game.age + "+";
     document.getElementById("gameDescription").textContent = game["desc-long"];
-    document.getElementById("gamePublisher").textContent = game.publisher; 
-    document.getElementById("gameYear").textContent = game.year; 
 }
 
-/
-updateGameInfo(0);
+function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    var game = getParameterByName('game');
+    games.forEach(function(element) {
+    if (element.title === game) {
+      updateGameInfo(element);
+    }
+    });
     </script>
 </body>
 </html>

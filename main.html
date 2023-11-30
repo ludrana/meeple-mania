@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Meeple Mania</title>
+    <title>Meeple Mania | Главная</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="main.css">
@@ -13,20 +13,20 @@
     <header class="p-3">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img src="icon.png" width="40" height="40" role="img" aria-label="Meeple Mania" ><use xlink:href="#bootstrap"/></img>
+          <a href="main.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <img src="source/img/icon.png" width="40" height="40" role="img" aria-label="Meeple Mania" ><use xlink:href="#bootstrap"/></img>
           </a>
   
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link">Главная</a></li>
-            <li><a href="#" class="nav-link">Список настолок</a></li>
-            <li><a href="#" class="nav-link">Рекомендательная система</a></li>
-            <li><a href="#" class="nav-link">О нас</a></li>
+            <li><a href="main.html" class="nav-link">Главная</a></li>
+            <li><a href="list.html" class="nav-link">Список настолок</a></li>
+            <li><a href="recom.html" class="nav-link">Рекомендательная система</a></li>
+            <li><a href="about-us.html" class="nav-link">О нас</a></li>
           </ul>
   
           <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Регистрация</button>
-            <button type="button" class="btn btn-warning">Вход</button>
+            <a href="loginandpassword.html?screen=registerForm"><button type="button" class="btn btn-outline-light me-2">Регистрация</button></a>
+            <a href="loginandpassword.html?screen=loginForm"><button type="button" class="btn btn-warning" >Вход</button></a>
           </div>
         </div>
       </div>
@@ -34,13 +34,21 @@
     <!-- Конец шапки --> 
     <div class="center">
         <div class="spacer"><h1>Добро пожаловать</h1></div>
-        <div class="spacer"><img src="cat-main.jpg" width="450px"></div>
+        <div class="spacer"><img src="source/img/cat-main.jpg" width="450px"></div>
         <div class="spacer"><h3>Meeple Mania - ваш лучший партнер в мире настольных игр!</h3></div>
         <div class="content">
-          <div><button type="button" class="btn btn-warning">Рекомендательная система</button></div>
-          <div><button type="button" class="btn btn-warning">Чистый рандом лол</button></div>
+          <a href="recom.html"><div><button type="button" class="btn btn-warning">Рекомендательная система</button></div></a>
+          <a id="random" href="#"><div><button type="button" class="btn btn-warning">Чистый рандом лол</button></div></a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+      window.onload = function() {
+        var games = ["Колонизаторы", "Монополия", "Шахматы", "UNO", "Каркассон"]
+        var rand = arr[(Math.floor(Math.random() * arr.length))]
+        const link = document.getElementById('random');
+        link.href = `pattern.html?game=${random}`;
+      };
+    </script>
   </body>
 </html>

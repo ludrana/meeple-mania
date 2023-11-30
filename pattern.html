@@ -151,22 +151,10 @@ function updateGameInfo(index) {
     document.getElementById("gameDescription").textContent = game["desc-long"];
 }
 
-function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    var game = getParameterByName('game');
-    games.forEach(function(element) {
-    if (element.title === game) {
-      updateGameInfo(element);
-    }
-    });
+    var urlParams = new URLSearchParams(window.location.search);
+    var game = parseInt(urlParams.get('game'));
+    console.log(game)
+    updateGameInfo(game)
     </script>
 </body>
 </html>

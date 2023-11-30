@@ -52,13 +52,14 @@
 
         <div class="row">
             <div class="col-md-6">
-                <img id="gameCover" src="game_cover.jpg" alt="Обложка игры" class="img-fluid" style="max-width: 80%;">
+                <img id="gameCover" src="game_cover.jpg" alt="Обложка игры" height="400px">
             </div>
             <div class="col-md-6">
                 <p class="game-info"><strong>Жанр:</strong> <span id="gameGenre">Стратегия</span></p>
                 <p class="game-info"><strong>Количество игроков:</strong> <span id="gamePlayers">2-4</span></p>
                 <p class="game-info"><strong>Время игры:</strong> <span id="gameTime">60 минут</span></p>
-                <p class="game-info"><strong>Рейтинг игры:</strong> <span id="gameAge" class="age" style="color: black;">6+</span></p>
+                <p class="game-info"><strong>Возраст игроков:</strong> <span id="gameAge" class="age" style="color: black;">6+</span></p>
+                <p class="game-info"><strong>Стоимость:</strong> <span id="gamePrice">1</span></p>
             </div>
         </div>
 
@@ -148,6 +149,7 @@ function updateGameInfo(index) {
     document.getElementById("gamePlayers").textContent = game.minpeople + "-" + game.maxpeople;
     document.getElementById("gameTime").textContent = game.mintime + "-" + game.maxtime + " мин";
     document.getElementById("gameAge").textContent = game.age + "+";
+    document.getElementById("gamePrice").textContent = game.price + " ₽";
     document.getElementById("gameDescription").textContent = game["desc-long"];
     document.title = `Meeple Mania | ${game.title}`;
 }

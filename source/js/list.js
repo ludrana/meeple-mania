@@ -72,39 +72,58 @@ const games = [
 ]
 ;
 
-window.onload = function () {
-    var genreSelect = document.getElementById("genre");
-    const uniqueGenres = [...new Set(games.map(game => game.genre))];
-    uniqueGenres.forEach(function (genre) {
-        var option = document.createElement("option");
-        option.value = genre;
-        option.textContent = genre;
-        genreSelect.appendChild(option);
+function createCard(data) {
+    var newDiv = document.createElement('div');
+    newDiv.classList.add('col');
+    newDiv.innerHTML = `
+    <div class="card shadow-sm">
+    <img src=${data.image} width="100%" height="225"> </img>
+  
+  <div class="card-body">
+    <h5>${data.title}</h5>
+    <p class="card-text">${data.descShort}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <a href="pattern.html?game=${data.id}"><button type="button" class="btn btn-sm btn-outline-secondary">Описание</button></a>
+        <a onclick="addToCart(${data.id})"><button type="button" class="btn btn-sm btn-outline-secondary" id="trigger${data.id}">Добавить в корзину</button></a>
+      </div>
+      <small class="text-body-secondary">${data.mintime} - ${data.maxtime}</small>
+    </div>
+  </div>
+</div>
+    `;
+    return newDiv;
+}
+  
+window.onload = function() {
+    const container = document.getElementById('albumContainer');
+    games.forEach(game => {
+        const card = createCard(game);
+        container.appendChild(card);
     });
+    games.forEach(game => {
+        var toastTrigger = document.getElementById(`trigger${game.id}`)
+        toastTrigger.addEventListener('click', function() {
+            // Show the toast
+            var toast = document.getElementById('liveToast');
+            toast.classList.add('show');
+            setTimeout(function() {
+                toast.classList.remove('show');
+              }, 1500);
+        });
+    });
+    document.getElementById('closeToastButton').addEventListener('click', function() {
+        var toast = document.getElementById('liveToast');
+        toast.classList.remove('show');
+      });
 };
 
-function getRecommendedGames() {
-    const selectedGenre = document.getElementById("genre").value;
-    const selectedAge = parseInt(document.getElementById("age").value);
-    const selectedPlayers = parseInt(document.getElementById("players").value);
-    const selectedTime = parseInt(document.getElementById("time").value);
-
-    const recommendedGames = games.filter(game => 
-        game.genre === selectedGenre &&
-        game.age <= selectedAge &&
-        game.minpeople <= selectedPlayers &&
-        game.maxpeople >= selectedPlayers &&
-        game.mintime <= selectedTime &&
-        game.maxtime >= selectedTime
-    );
-
-    const resultElement = document.getElementById("result");
-    if (recommendedGames.length > 0) {
-        resultElement.innerHTML = "<p>Рекомендуемые игры:</p>";
-        recommendedGames.forEach(game => {
-            resultElement.innerHTML += `<a href="pattern.html?game=${game.id}"><button class="game-button">${game.title}</button></a>`;
-        });
-    } else {
-        resultElement.textContent = "Игры не найдены. Попробуйте изменить параметры.";
+function addToCart(id) {
+    if (localStorage.getItem(id.toString()) === null) {
+        localStorage.setItem(id.toString(), "1")
+    }
+    else {
+        var count = parseInt(localStorage.getItem(id.toString())) + 1
+        localStorage.setItem(id.toString(), count.toString())
     }
 }

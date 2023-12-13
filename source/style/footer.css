@@ -1,0 +1,28 @@
+footer {
+    background-color: #7F2A6E;
+    margin-top: auto;
+    margin-top: auto;
+    background-color: #7F2A6E;
+    color: white;
+    padding: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.recform {
+    flex-grow: 1;
+}
+
+.nav-link {
+    color: white !important;
+}

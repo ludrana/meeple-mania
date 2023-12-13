@@ -81,8 +81,14 @@ window.onload = function () {
         option.textContent = genre;
         genreSelect.appendChild(option);
     });
-
-    
+    const savedRecommendedGames = getSavedRecommendedGames();
+    if (savedRecommendedGames.length > 0) {
+        displayRecommendedGames(savedRecommendedGames);
+    }
+    const savedFormValues = getSavedFormValues();
+    if (savedFormValues) {
+        restoreFormValues(savedFormValues);
+    }
 };
 
 function getRecommendedGames() {
@@ -102,29 +108,36 @@ function getRecommendedGames() {
 
     const resultElement = document.getElementById("result");
     if (recommendedGames.length > 0) {
-        resultElement.innerHTML = "<p>Рекомендуемые игры:</p>";
-        recommendedGames.forEach(game => {
-            const button = document.createElement("button");
-            button.className = "game-button";
-            button.textContent = game.title;
-            button.setAttribute("data-game-id", game.id);
-            button.addEventListener("click", function(event) {
-                event.preventDefault();
-                const gameId = this.getAttribute("data-game-id");
-                saveRecommendedGames(recommendedGames);
-                redirectToGamePage(gameId);
-            });
-            resultElement.appendChild(button);
-        });
+        saveRecommendedGames(recommendedGames);
+        displayRecommendedGames(recommendedGames);
+        saveFormValues();
     } else {
         resultElement.textContent = "Игры не найдены. Попробуйте изменить параметры.";
     }
     
 }
 
+function displayRecommendedGames(recommendedGames) {
+    const resultElement = document.getElementById("result");
+    resultElement.innerHTML = "<p>Рекомендуемые игры:</p>";
+    recommendedGames.forEach(game => {
+        const button = document.createElement("button");
+        button.className = "game-button";
+        button.textContent = game.title;
+        button.setAttribute("data-game-id", game.id);
+        button.addEventListener("click", function(event) {
+            event.preventDefault();
+            const gameId = this.getAttribute("data-game-id");
+            redirectToGamePage(gameId);
+        });
+
+        resultElement.appendChild(button);
+    });
+}
+
 function redirectToGamePage(gameId) {
-    const url = `pattern.html?game=${gameId}`;
-    window.open(url, '_blank');
+    // window.open(`pattern.html?game=${gameId}`, '_blank');
+    window.location.href = `pattern.html?game=${gameId}`;
 }
 
 function saveRecommendedGames(recommendedGames) {
@@ -134,4 +147,34 @@ function saveRecommendedGames(recommendedGames) {
 function getSavedRecommendedGames() {
     const savedRecommendedGames = sessionStorage.getItem("recommendedGames");
     return savedRecommendedGames ? JSON.parse(savedRecommendedGames) : [];
+}
+
+function restoreFormValues(savedFormValues) {
+    document.getElementById("genre").value = savedFormValues.genre;
+    document.getElementById("age").value = savedFormValues.age;
+    document.getElementById("players").value = savedFormValues.players;
+    document.getElementById("time").value = savedFormValues.time;
+    updatePlayerCount();
+    updatePlayTime();
+}
+
+function saveFormValues() {
+    const genre = document.getElementById("genre").value;
+    const age = document.getElementById("age").value;
+    const players = document.getElementById("players").value;
+    const time = document.getElementById("time").value;
+
+    const formValues = {
+        genre: genre,
+        age: age,
+        players: players,
+        time: time
+    };
+
+    sessionStorage.setItem("formValues", JSON.stringify(formValues));
+}
+
+function getSavedFormValues() {
+    const savedFormValues = sessionStorage.getItem("formValues");
+    return savedFormValues ? JSON.parse(savedFormValues) : null;
 }

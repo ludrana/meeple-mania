@@ -81,6 +81,8 @@ window.onload = function () {
         option.textContent = genre;
         genreSelect.appendChild(option);
     });
+
+    
 };
 
 function getRecommendedGames() {
@@ -102,9 +104,34 @@ function getRecommendedGames() {
     if (recommendedGames.length > 0) {
         resultElement.innerHTML = "<p>Рекомендуемые игры:</p>";
         recommendedGames.forEach(game => {
-            resultElement.innerHTML += `<a href="pattern.html?game=${game.id}"><button class="game-button">${game.title}</button></a>`;
+            const button = document.createElement("button");
+            button.className = "game-button";
+            button.textContent = game.title;
+            button.setAttribute("data-game-id", game.id);
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                const gameId = this.getAttribute("data-game-id");
+                saveRecommendedGames(recommendedGames);
+                redirectToGamePage(gameId);
+            });
+            resultElement.appendChild(button);
         });
     } else {
         resultElement.textContent = "Игры не найдены. Попробуйте изменить параметры.";
     }
+    
+}
+
+function redirectToGamePage(gameId) {
+    const url = `pattern.html?game=${gameId}`;
+    window.open(url, '_blank');
+}
+
+function saveRecommendedGames(recommendedGames) {
+    sessionStorage.setItem("recommendedGames", JSON.stringify(recommendedGames));
+}
+
+function getSavedRecommendedGames() {
+    const savedRecommendedGames = sessionStorage.getItem("recommendedGames");
+    return savedRecommendedGames ? JSON.parse(savedRecommendedGames) : [];
 }

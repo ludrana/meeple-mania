@@ -1,49 +1,25 @@
 <?php require "source/php/sessiondata.php"; ?>
-<!DOCTYPE html>
-<html lang="ru">
+<?php $html = require "source/php/history.php"; ?>
+<!doctype html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meeple Mania | О нас</title>
+  <title>Meeple Mania | История покупок</title>
   <link rel="icon" type="image/png" href="source/img/icon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="source/style/style.css">
   <link rel="stylesheet" href="source/style/footer.css">
   <link rel="stylesheet" href="source/style/toast+material.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <script src="source/js/jquery-3.7.1.js"></script>
 </head>
 
 <body>
-
-  <!-- Начало шапки (user not logged in) -->
-  <header class="p-3" <?php echo $headerdata['style_out'];?>>
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="main.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img src="source/img/icon.png" width="40" height="40" role="img" aria-label="Meeple Mania">
-          <use xlink:href="#bootstrap" /></img>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="main.html" class="nav-link">Главная</a></li>
-          <li><a href="list.html" class="nav-link">Список настолок</a></li>
-          <li><a href="recom.html" class="nav-link">Рекомендательная система</a></li>
-          <li><a href="about-us.html" class="nav-link">О нас</a></li>
-        </ul>
-
-        <div class="text-end">
-          <a href="signup.html"><button type="button"
-              class="btn btn-outline-light me-2">Регистрация</button></a>
-          <a href="login.html"><button type="button"
-              class="btn btn-warning">Вход</button></a>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- Конец шапки -->
-  <!-- Header start (user logged in) -->
+  <!-- Начало шапки -->
   <header class="p-3 mb-3" <?php echo $headerdata['style_in'];?>>
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -78,32 +54,8 @@
     </div>
   </header>
   <!-- Header end -->
-  <!-- Контент страницы -->
-  <div class="container mt-5">
-    <h1>О нас</h1>
-    <p></p>
-    <p>Добро пожаловать на Meeple Mania, вашу платформу для любителей настольных игр!</p>
-
-    <p>Независимо от вашего опыта с настольными играми, Meeple Mania сможет улучшить ваши впечатления от игр.
-      Вы можете изучить нашу коллекцию настольных игр, погрузится в бесконечный мир развлечений вместе с друзьями и
-      воспользоваться нашей системой рекомендаций, чтобы найти новые настольные игры.</p>
-
-    <p>Спасибо, что являетесь частью Meeple Mania! </p>
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-center">
-        <div class="p-3">
-          <img src="source/img/about1.jpg" alt="Фотография 1" width="300" height="200">
-        </div>
-        <div class="p-3">
-          <img src="source/img/about2.png" alt="Фотография 2" width="300" height="200">
-        </div>
-        <div class="p-3">
-          <img src="source/img/about3.webp" alt="Фотография 3" width="300" height="200">
-        </div>
-      </div>
-
-    </div>
-
+  <div class="container" id="cartContainer">
+    <?php echo $html; ?>
   </div>
 
   <!--FOOTER BEGIN-->
@@ -121,13 +73,12 @@
           <div class="col-6 col-md-2 mb-3">
             <h5>Навигация</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="./main.html" class="nav-link p-0 text-body-secondary">Главная</a></li>
-              <li class="nav-item mb-2"><a href="./list.html" class="nav-link p-0 text-body-secondary">Список
-                  настолок</a></li>
-              <li class="nav-item mb-2"><a href="./recom.html" class="nav-link p-0 text-body-secondary">Рекомендательная
-                  система</a></li>
-              <li class="nav-item mb-2"><a href="./about-us.html" class="nav-link p-0 text-body-secondary">О нас</a>
+              <li class="nav-item mb-2"><a href="main.html" class="nav-link p-0 text-body-secondary">Главная</a></li>
+              <li class="nav-item mb-2"><a href="list.html" class="nav-link p-0 text-body-secondary">Список настолок</a>
               </li>
+              <li class="nav-item mb-2"><a href="recom.html" class="nav-link p-0 text-body-secondary">Рекомендательная
+                  система</a></li>
+              <li class="nav-item mb-2"><a href="about-us.html" class="nav-link p-0 text-body-secondary">О нас</a></li>
             </ul>
           </div>
 
@@ -138,7 +89,7 @@
               <div class="d-flex flex-column flex-sm-row w-100 gap-2">
                 <label for="newsletter1" class="visually-hidden">Email</label>
                 <input id="newsletter1" type="text" class="form-control" placeholder="Email">
-                <button class="btn btn-warning" type="button" onclick="newsletterClicked()">Подписаться</button>
+                <button class="btn btn-warning" type="button">Подписаться</button>
               </div>
             </form>
           </div>
@@ -161,10 +112,11 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-  <script src="source/js/newsletter.js"></script>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="source/js/newsletter.js"></script>
+<script src="source/js/history.js"></script>
 
 </html>

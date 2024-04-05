@@ -1,0 +1,13 @@
+.btn-purple {
+    background-color:  #8c3ebd; 
+    color: #ffffff; 
+    transition: background-color 0.3s;
+}
+
+.btn-purple:hover {
+    background-color: #bf6bd4; 
+}
+
+.btn-purple:focus {
+    background-color: #da488f;
+}

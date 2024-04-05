@@ -1,0 +1,28 @@
+.toast {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: .75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+
+  .toast.success {
+    background-color: #d7f8de;
+    border-color: #c6f5c9;
+    color: #1c721d;
+  }
+
+  .toast.fail {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+  
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+  }

@@ -4,6 +4,11 @@
     margin-top: 6vw;
 }
 
+#editProfileInfo {
+    max-width: 600px;
+    margin: auto;
+}
+
 #profilePicture {
     max-width: 18vw;
     height: auto;
@@ -25,31 +30,6 @@
     background-color: #45a049;
 }
 
-#editForm {
-    display: none;
-    margin-top: 20px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-lkab {
+.lkab {
     margin-top: 20vw;
-}
-
-button[type="submit"]:hover {
-    background-color: #45a049;
 }

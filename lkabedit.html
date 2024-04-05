@@ -1,50 +1,25 @@
-<?php require "source/php/sessiondata.php"; ?>
-<!DOCTYPE html>
-<html lang="ru">
+<?php $data = require('source/php/lkab.php') ?>
+<?php $games_select = require('source/php/games_select.php') ?>
+<!doctype html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meeple Mania | О нас</title>
+  <title>Meeple Mania | Редактировать профиль</title>
   <link rel="icon" type="image/png" href="source/img/icon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="source/style/style.css">
-  <link rel="stylesheet" href="source/style/footer.css">
+  <link rel="stylesheet" href="source/style/lkab.css">
   <link rel="stylesheet" href="source/style/toast+material.css">
+  <link rel="stylesheet" href="source/style/footer.css">
   <script src="source/js/jquery-3.7.1.js"></script>
 </head>
 
 <body>
-
-  <!-- Начало шапки (user not logged in) -->
-  <header class="p-3" <?php echo $headerdata['style_out'];?>>
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="main.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img src="source/img/icon.png" width="40" height="40" role="img" aria-label="Meeple Mania">
-          <use xlink:href="#bootstrap" /></img>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="main.html" class="nav-link">Главная</a></li>
-          <li><a href="list.html" class="nav-link">Список настолок</a></li>
-          <li><a href="recom.html" class="nav-link">Рекомендательная система</a></li>
-          <li><a href="about-us.html" class="nav-link">О нас</a></li>
-        </ul>
-
-        <div class="text-end">
-          <a href="signup.html"><button type="button"
-              class="btn btn-outline-light me-2">Регистрация</button></a>
-          <a href="login.html"><button type="button"
-              class="btn btn-warning">Вход</button></a>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- Конец шапки -->
   <!-- Header start (user logged in) -->
-  <header class="p-3 mb-3" <?php echo $headerdata['style_in'];?>>
+  <header class="p-3 mb-3">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="main.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -62,7 +37,7 @@
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <img src="<?php echo $headerdata['pfp'];?>" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="<?php echo $data['pfp'];?>" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="shopcart.html">Корзина</a></li>
@@ -78,32 +53,50 @@
     </div>
   </header>
   <!-- Header end -->
-  <!-- Контент страницы -->
-  <div class="container mt-5">
-    <h1>О нас</h1>
-    <p></p>
-    <p>Добро пожаловать на Meeple Mania, вашу платформу для любителей настольных игр!</p>
 
-    <p>Независимо от вашего опыта с настольными играми, Meeple Mania сможет улучшить ваши впечатления от игр.
-      Вы можете изучить нашу коллекцию настольных игр, погрузится в бесконечный мир развлечений вместе с друзьями и
-      воспользоваться нашей системой рекомендаций, чтобы найти новые настольные игры.</p>
-
-    <p>Спасибо, что являетесь частью Meeple Mania! </p>
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-center">
-        <div class="p-3">
-          <img src="source/img/about1.jpg" alt="Фотография 1" width="300" height="200">
-        </div>
-        <div class="p-3">
-          <img src="source/img/about2.png" alt="Фотография 2" width="300" height="200">
-        </div>
-        <div class="p-3">
-          <img src="source/img/about3.webp" alt="Фотография 3" width="300" height="200">
-        </div>
-      </div>
-
+  <div class="container mt-3">
+    <?php 
+    if (isset($_SESSION["err"]) && $_SESSION["err"] == true) 
+      echo $_SESSION["errdiv"]; 
+    else if (isset($_SESSION["err"]) && $_SESSION["err"] == false) 
+      echo $_SESSION["succdiv"]; 
+    unset($_SESSION["errdiv"]); 
+    unset($_SESSION["err"]); 
+    unset($_SESSION["succdiv"]); 
+    ?>
+    <div class="justify-content-center align-items-center d-flex">
+      <h2>Редактировать профиль</h2>
     </div>
-
+    <div id="editProfileInfo" class="d-flex">
+      <div class="col my-auto mx-auto">
+        <form action="source/php/editprofile.php" method="post" enctype="multipart/form-data">
+          <p><strong>Имя: </strong></p>
+          <p><input type="text" class="form-control" name="newUsername" placeholder="Имя пользователя"
+              value="<?php echo $data['username'];?>" required></p>
+          <p><strong>Любимая игра: </strong>
+            <select id="gameid" class="form-select" name="newGameid">
+              <?php if (isset($games_select)) { echo $games_select; } ?>
+            </select>
+          </p>
+          <p><strong>Изменить аватарку</strong></p>
+          <p>
+            <input type="file" class="form-control"name="newPfp" accept="image/*">
+          </p>
+          <p><strong>Изменить пароль</strong></p>
+          <p><input type="password" class="form-control" name="oldpsw" id="oldpsw" placeholder="Текущий пароль"></p>
+          <p><input type="password" class="form-control" name="newpsw" id="newpsw" placeholder="Новый пароль"></p>
+          <p><input type="password" class="form-control" name="repeatpsw" id="repeatpsw" placeholder="Повторите пароль"></p>
+          <p>
+          <div class="justify-content-between align-items-center d-flex">
+            <a href="lkab.html">
+              <button class="btn btn-warning" type="button">Назад</button>
+            </a>
+            <button class="btn btn-warning" type="submit">Сохранить</button>
+          </div>
+          </p>
+        </form>
+      </div>
+    </div>
   </div>
 
   <!--FOOTER BEGIN-->

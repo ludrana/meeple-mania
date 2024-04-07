@@ -4,7 +4,7 @@ $price = 0;
 $quantity = 0;
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
-    $link = mysqli_connect("localhost", "root", "", "meeple_mania");
+    $link = mysqli_connect("localhost", "root", "root", "meeple_mania");
     if (mysqli_connect_errno()) {
         error_log(mysqli_connect_error());
         $response = "Ошибка соединения с базой данных";

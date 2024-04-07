@@ -10,7 +10,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 $username = $email = $password = $confirm_password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $link = new mysqli("localhost", "root", "", "meeple_mania");
+    $link = new mysqli("localhost", "root", "root", "meeple_mania");
     if ($link->connect_error) {
         error_log($link->connect_error);
         $_SESSION["err"] = true;

@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "meeple_mania");
+$conn = new mysqli("localhost", "root", "root", "meeple_mania");
 $html = "";
 if ($conn->connect_error) {
     error_log($conn->connect_error);

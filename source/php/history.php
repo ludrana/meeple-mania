@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
 
-    $conn = new mysqli("localhost", "root", "", "meeple_mania");
+    $conn = new mysqli("localhost", "root", "root", "meeple_mania");
     $html = "";
     if ($conn->connect_error) {
         error_log("Ошибка: " . $conn->connect_error);

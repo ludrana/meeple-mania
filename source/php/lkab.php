@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    $link = new mysqli("localhost", "root", "", "meeple_mania");
+    $link = new mysqli("localhost", "root", "root", "meeple_mania");
     if ($link->connect_error) {
         error_log($link->connect_error);
         header("Location: /418.html");

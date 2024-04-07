@@ -1,7 +1,7 @@
 <?php
 $response = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $conn = mysqli_connect("localhost", "root", "", "meeple_mania");
+    $conn = mysqli_connect("localhost", "root", "root", "meeple_mania");
     if (mysqli_connect_errno()) {
         $response = "Ошибка соединения с базой данных";
         http_response_code(500);

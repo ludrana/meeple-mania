@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "meeple_mania");
+$conn = mysqli_connect("localhost", "root", "root", "meeple_mania");
 if ($conn->connect_error) {
     error_log($link->connect_error);
     header("Location: /418.html");

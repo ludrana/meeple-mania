@@ -2,7 +2,7 @@
 $response = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $conn = mysqli_connect("localhost","root","","meeple_mania");
+        $conn = mysqli_connect("localhost","root","root","meeple_mania");
         if (mysqli_connect_errno()) {
             error_log(mysqli_connect_error());
             $response = "Ошибка соединения с базой данных";

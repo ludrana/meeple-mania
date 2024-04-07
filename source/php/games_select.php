@@ -1,6 +1,6 @@
 <?php
 if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    $conn = new mysqli("localhost", "root", "", "meeple_mania");
+    $conn = new mysqli("localhost", "root", "root", "meeple_mania");
     $favgame = $conn->query("SELECT game_id FROM users WHERE user_id = " . $_SESSION["id"])->fetch_object()->game_id;
 
     $html = "";

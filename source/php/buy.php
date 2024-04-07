@@ -3,7 +3,7 @@ session_start();
 $response = "";
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    $mysqli = new mysqli('localhost', 'root', '', 'meeple_mania');
+    $mysqli = new mysqli('localhost', 'root', 'root', 'meeple_mania');
 
     if ($mysqli->connect_error) {
         error_log(mysqli_connect_error());
